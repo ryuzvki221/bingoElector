@@ -24,15 +24,11 @@ namespace bingoElector.Controllers
         }
 
         // GET: api/Elector/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetElector")]
         public async Task<ActionResult<Elector>> Get(string id)
         {
             var elector = await _electorService.GetElector(id);
-            if (elector == null)
-            {
-                return NotFound();
-            }
-            return Ok(elector);
+            return (elector == null) ? NotFound() : Ok(elector);
         }
 
         // POST: api/Elector
@@ -48,12 +44,8 @@ namespace bingoElector.Controllers
         public async Task<ActionResult> Put(string id, [FromBody] string lastName, string firstName, string lieu, string bureau)
         {
             var elector = await _electorService.GetElector(id);
-            if (elector == null)
-            {
-                return NotFound();
-            }
             await _electorService.UpdateElector(id, lastName, firstName, lieu, bureau);
-            return Ok();
+            return (elector == null) ? NotFound() : Ok();
         }
 
         // DELETE: api/Elector/5
@@ -61,12 +53,8 @@ namespace bingoElector.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             var elector = await _electorService.GetElector(id);
-            if (elector == null)
-            {
-                return NotFound();
-            }
             await _electorService.RemoveElector(id);
-            return Ok();
+             return (elector == null) ? NotFound() : Ok();
         }
 
         // DELETE: api/Electors

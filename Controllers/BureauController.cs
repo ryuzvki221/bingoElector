@@ -24,15 +24,13 @@ namespace bingoElector.Controllers
         }
 
         // GET: api/Bureau/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetBureau")]
         public async Task<ActionResult<Bureau>> Get(string id)
         {
             var bureau = await _bureauService.GetBureau(id);
-            if (bureau == null)
-            {
-                return NotFound();
-            }
-            return Ok(bureau);
+
+            return (bureau == null) ? NotFound() : Ok(bureau);
+
         }
 
         // POST: api/Bureau
@@ -43,17 +41,14 @@ namespace bingoElector.Controllers
             return Ok();
         }
 
-        // PUT: api/Elector/5
+        // PUT: api/Bureau/5
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, [FromBody] string name, int capacite)
         {
-            var elector = await _bureauService.GetBureau(id);
-            if (elector == null)
-            {
-                return NotFound();
-            }
+            var bureau = await _bureauService.GetBureau(id);
+
             await _bureauService.UpdateBureau(id, name, capacite);
-            return Ok();
+            return (bureau == null) ? NotFound() : Ok();
         }
 
         // DELETE: api/Bureau/5
@@ -61,21 +56,18 @@ namespace bingoElector.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             var bureau = await _bureauService.GetBureau(id);
-            if (bureau == null)
-            {
-                return NotFound();
-            }
+
             await _bureauService.RemoveBureau(id);
-            return Ok();
+            return (bureau == null) ? NotFound() : Ok();
         }
 
-         // DELETE: api/Bureaux
+        // DELETE: api/Bureaux
         [HttpDelete]
         public async Task<ActionResult> Delete()
         {
             await _bureauService.RemoveAllBureaux();
             return Ok();
         }
- 
+
     }
 }

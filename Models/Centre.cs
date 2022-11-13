@@ -16,6 +16,7 @@ namespace bingoElector.Models
         // one to many relationship : one centre can have many bureaux
         [BsonElement("Bureaux")]
         [JsonPropertyName("Bureaux")]
-        public List<Bureau> Bureaux { get; set; } = new List<Bureau>();
+        public List<string>? BureauIds { get; set; }
+
     }
 }
