@@ -11,7 +11,7 @@ namespace bingoElector.Models
         public string? Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Capacite { get; set; }
-        // many to one relationship : one bureau, one center
+        // many to one relationship : one bureau -> one centre
         public int CentreId { get; set; }
         // one to many relationship : one bureau can have many electors
         [BsonElement("Electors")]

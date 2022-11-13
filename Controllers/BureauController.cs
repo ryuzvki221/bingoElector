@@ -9,7 +9,7 @@ namespace bingoElector.Controllers
     [ApiController]
     public class BureauController : ControllerBase
     {
-        private readonly BureauService _bureauService = null!;
+        private readonly BureauService _bureauService;
 
         public BureauController(BureauService bureauService)
         {
@@ -19,7 +19,7 @@ namespace bingoElector.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Bureau>>> Get()
         {
-            var result = await _bureauService.GetAllBureaux();
+            var result = await _bureauService.GetBureaux();
             return Ok(result);
         }
 
@@ -45,14 +45,14 @@ namespace bingoElector.Controllers
 
         // PUT: api/Elector/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] string name, int capacite, int centreId, list<Elector>)
+        public async Task<ActionResult> Put(string id, [FromBody] string name, int capacite)
         {
-            var elector = await _electorService.GetElector(id);
+            var elector = await _bureauService.GetBureau(id);
             if (elector == null)
             {
                 return NotFound();
             }
-            await _bureauService.UpdateBureau(id, name, capacite, centreId, elector);
+            await _bureauService.UpdateBureau(id, name, capacite);
             return Ok();
         }
 

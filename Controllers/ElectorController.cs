@@ -9,7 +9,7 @@ namespace bingoElector.Controllers
     [ApiController]
     public class ElectorController : ControllerBase
     {
-        private readonly ElectorService _electorService = null!;
+        private readonly ElectorService _electorService ;
 
         public ElectorController(ElectorService electorService)
         {

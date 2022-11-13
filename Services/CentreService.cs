@@ -23,7 +23,7 @@ namespace bingoElector.Services
 
         //Get all centres
 
-        public async Task<IEnumerable<Centre>> GetAllCentres()
+        public async Task<IEnumerable<Centre>> GetCentres()
         {
             try
             {

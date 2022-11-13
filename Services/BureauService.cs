@@ -24,7 +24,7 @@ namespace bingoElector.Services
 
         //Get all bureau
 
-        public async Task<IEnumerable<Bureau>> GetAllBureaux()
+        public async Task<IEnumerable<Bureau>> GetBureaux()
         {
             try
             {

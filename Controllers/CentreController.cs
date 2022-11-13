@@ -9,7 +9,7 @@ namespace bingoElector.Controllers
     [ApiController]
     public class CentreController : ControllerBase
     {
-        private readonly CentreService _centreService = null!;
+        private readonly CentreService _centreService;
 
         public CentreController(CentreService centreService)
         {
@@ -19,7 +19,7 @@ namespace bingoElector.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Centre>>> Get()
         {
-            var result = await _centreService.GetAllCentres();
+            var result = await _centreService.GetCentres();
             return Ok(result);
         }
 
@@ -34,14 +34,14 @@ namespace bingoElector.Controllers
         
         // PUT: api/Centre/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] string name, string address, int nombredesalle, List<Bureau>)
+        public async Task<ActionResult> Put(string id, [FromBody] string name, string address, int nombredesalle)
         {
-            var elector = await _centreService.GetCentre(id);
+            var centre = await _centreService.GetCentre(id);
             if (centre == null)
             {
                 return NotFound();
             }
-            await _centreService.UpdateCentre(id,name, address, nombredesalle, Bureau);
+            await _centreService.UpdateCentre(id,name, address, nombredesalle);
             return Ok();
         }
 
