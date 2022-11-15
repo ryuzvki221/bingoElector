@@ -43,12 +43,16 @@ namespace bingoElector.Controllers
 
         // PUT: api/Bureau/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] string name, int capacite)
+        public async Task<ActionResult> Put(string id, [FromBody] string bureauId, string name, int capacite)
         {
             var bureau = await _bureauService.GetBureau(id);
+            if (bureau == null)
+            {
+                return NotFound();
+            }
 
             await _bureauService.UpdateBureau(id, name, capacite);
-            return (bureau == null) ? NotFound() : Ok();
+            return Ok();
         }
 
         // DELETE: api/Bureau/5

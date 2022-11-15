@@ -16,7 +16,7 @@ namespace bingoElector.Models
         [BsonDateTimeOptions]
         public DateTime UpdatedOn { get; set; } = DateTime.Now;
 
-        // many to one relationship : one elector can have one bureau
+        // many to one relationship : many elector can have one bureau
         [BsonElement("Bureau")]
         [JsonPropertyName("Bureau")]
         public string BureauId { get; set; } = string.Empty;

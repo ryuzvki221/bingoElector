@@ -17,7 +17,7 @@ namespace bingoElector.Repositories
         // Remove a single document / elector
         Task<bool> RemoveElector(string id);
         // Update just a single document / elector
-        Task<bool> UpdateElector(string id, string lastName, string firstName, string lieuDeResidence, string bureau);
+        Task<bool> UpdateElector(string id,  string lieuDeResidence, string bureau);
         // Remove all electors
         Task<bool> RemoveAllElectors();
 

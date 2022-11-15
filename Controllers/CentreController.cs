@@ -34,14 +34,14 @@ namespace bingoElector.Controllers
         
         // PUT: api/Centre/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] string name, string address, int nombredesalle)
+        public async Task<ActionResult> Put(string id, [FromBody]  string address, string name, int nombredesalle)
         {
             var centre = await _centreService.GetCentre(id);
             if (centre == null)
             {
                 return NotFound();
             }
-            await _centreService.UpdateCentre(id,name, address, nombredesalle);
+            await _centreService.UpdateCentre(id,name, centre.Address, nombredesalle);
             return Ok();
         }
 

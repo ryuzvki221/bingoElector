@@ -9,7 +9,7 @@ namespace bingoElector.Controllers
     [ApiController]
     public class ElectorController : ControllerBase
     {
-        private readonly ElectorService _electorService ;
+        private readonly ElectorService _electorService;
 
         public ElectorController(ElectorService electorService)
         {
@@ -41,11 +41,15 @@ namespace bingoElector.Controllers
 
         // PUT: api/Elector/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, [FromBody] string lastName, string firstName, string lieu, string bureau)
+        public async Task<ActionResult> Put(string id, [FromBody] string electorId,  string lieu, string bureau)
         {
             var elector = await _electorService.GetElector(id);
-            await _electorService.UpdateElector(id, lastName, firstName, lieu, bureau);
-            return (elector == null) ? NotFound() : Ok();
+            if (elector == null)
+            {
+                return NotFound();
+            }
+            await _electorService.UpdateElector(id, lieu, bureau);
+            return Ok();
         }
 
         // DELETE: api/Elector/5
@@ -54,7 +58,7 @@ namespace bingoElector.Controllers
         {
             var elector = await _electorService.GetElector(id);
             await _electorService.RemoveElector(id);
-             return (elector == null) ? NotFound() : Ok();
+            return (elector == null) ? NotFound() : Ok();
         }
 
         // DELETE: api/Electors
