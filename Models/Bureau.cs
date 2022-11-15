@@ -11,11 +11,13 @@ namespace bingoElector.Models
         public string? Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Capacite { get; set; }
-        // many to one relationship : one bureau, one center
-        public int CentreId { get; set; }
+        // many to one relationship : many bureau -> one centre
+        [BsonElement("Centre")]
+        [JsonPropertyName("Centre")]
+        public string? CentreId { get; set; }
         // one to many relationship : one bureau can have many electors
         [BsonElement("Electors")]
         [JsonPropertyName("Electors")]
-        public List<Elector> Electors { get; set; } = new List<Elector>();
+        public List<string>? ElectorIds { get; set; }
     }
 }

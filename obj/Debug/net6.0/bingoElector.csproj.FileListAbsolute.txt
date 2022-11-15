@@ -36,3 +36,6 @@ D:\Projects\dotnet\bingoElector\bingoElector\bin\Debug\net6.0\ZstdSharp.dll
 D:\Projects\dotnet\bingoElector\bingoElector\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
 D:\Projects\dotnet\bingoElector\bingoElector\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 D:\Projects\dotnet\bingoElector\bingoElector\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\cheik\OneDrive\Bureau\bingoElector\bingoElector\obj\Debug\net6.0\bingoElector.dll
+C:\Users\cheik\OneDrive\Bureau\bingoElector\bingoElector\obj\Debug\net6.0\refint\bingoElector.dll
+C:\Users\cheik\OneDrive\Bureau\bingoElector\bingoElector\obj\Debug\net6.0\bingoElector.pdb

@@ -72,14 +72,12 @@ namespace bingoElector.Services
 
         // Update an existing elector document
 
-        public async Task<bool> UpdateElector(string id, string lastName, string firstName, string lieuDeResidence, string bureau)
+        public async Task<bool> UpdateElector(string id,  string lieuDeResidence, string bureau)
         {
 
 
             var filter = Builders<Elector>.Filter.Eq(s => s.Id, id);
             var update = Builders<Elector>.Update
-                            .Set(s => s.LastName, lastName)
-                            .Set(s => s.FirstName, firstName)
                             .Set(s => s.LieuDeResidence, lieuDeResidence)
                             .Set(s => s.BureauId, bureau)
                             .CurrentDate(s => s.UpdatedOn);
